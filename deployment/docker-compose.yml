@@ -1,0 +1,91 @@
+version: "3.8"
+services:
+  # Nginx servers
+  nginx-backend:
+    image: nginx
+    container_name: gestion-estudiantes-nginx-backend-container
+    restart: always
+    ports:
+      - 80:80
+    volumes:
+      - ./backend.conf:/etc/nginx/nginx.conf
+    networks:
+      - gestion-estudiantes-backend-network
+    depends_on:
+      - spring1
+      - spring2
+  nginx-frontend:
+    image: nginx
+    container_name: gestion-estudiantes-nginx-frontend-container
+    restart: always
+    ports:
+      - 8070:8070
+    volumes:
+      - ./frontend.conf:/etc/nginx/nginx.conf
+    networks:
+      - gestion-estudiantes-frontend-network
+    depends_on:      
+      - react1
+  postgres:
+    container_name: gestion-estudiantes-postgres-container
+    image: postgres
+    deploy:
+      restart_policy:
+        condition: on-failure
+    volumes:
+      - gestion-estudiantes-postgres-volume:/var/lib/postgresql/data
+    networks:
+      - gestion-estudiantes-backend-network
+    environment:      
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - 5435:5432      
+  spring1:
+    container_name: gestion-estudiantes-backend-container-1
+    image: josetorob/tingeso1v2
+    ports:
+      - 8091:8090
+    environment:
+      DB_HOST: gestion-estudiantes-postgres-container
+      DB_PORT: 5432
+      DB_USERNAME: postgres
+      DB_PASSWORD: postgres
+    networks:
+      - gestion-estudiantes-backend-network
+    deploy:
+      restart_policy:
+        condition: on-failure
+    depends_on:
+      - postgres
+  spring2:
+    container_name: gestion-estudiantes-backend-container-2
+    image: josetorob/tingeso1v2
+    ports:
+      - 8092:8090
+    environment:
+      DB_HOST: gestion-estudiantes-postgres-container
+      DB_PORT: 5432
+      DB_USERNAME: postgres
+      DB_PASSWORD: postgres
+    networks:
+      - gestion-estudiantes-backend-network
+    deploy:
+      restart_policy:
+        condition: on-failure
+    depends_on:
+      - postgres
+  react1:
+    container_name: gestion-estudiantes-frontend-container-1
+    image: josetorob/frontl1
+    ports:
+      - 3001:3000
+    networks:
+      - gestion-estudiantes-frontend-network
+    deploy:
+      restart_policy:
+        condition: on-failure
+volumes:
+  gestion-estudiantes-postgres-volume:
+networks:
+  gestion-estudiantes-frontend-network:
+  gestion-estudiantes-backend-network:
