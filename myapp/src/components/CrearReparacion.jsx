@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
-
 import autoService from '../services/autoService.js';
 import { Link } from 'react-router-dom';
+
 export default function crearReparacion() {
     const [montoTotal, setMontoTotal] = useState('');
     const [fechaIngreso, setFechaIngreso] = useState('');
@@ -16,10 +16,10 @@ export default function crearReparacion() {
     const [motor, setMotor] = useState('');
     const [tipoReparacion, setTipoReparacion] = useState([]);
 
-    const handleCrearReparacion = (e) => {
+    async function handleCrearReparacion (e) {
         e.preventDefault();
         try {
-            const response = autoService.CrearReparacion({
+            const response = await autoService.CrearReparacion({
                 montoTotal,
                 fechaIngreso,
                 horaIngreso,
