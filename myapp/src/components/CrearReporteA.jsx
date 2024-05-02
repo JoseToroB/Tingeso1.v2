@@ -40,7 +40,9 @@ export default function CrearReporteA(){
             {reporteA && (
                 <div>
                     <h2>Detalle del Reporte</h2>
-                    {/* info reporteA */}
+                    <p>Patente: {reporteA.patente}</p>
+                    
+                    
                 </div>
             )}
         </div>

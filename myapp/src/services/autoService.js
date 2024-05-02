@@ -14,6 +14,7 @@ function CrearReparacion(r){
 }
 
 function CrearReporteA(patente){
+    console.log("Calculando reporte A para:", patente);
     return axios.get(`${REPORTEA_URL}/calcularReporteA/${patente}`);
 }
 

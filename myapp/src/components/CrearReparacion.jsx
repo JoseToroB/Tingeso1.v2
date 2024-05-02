@@ -16,7 +16,7 @@ export default function crearReparacion() {
     const [motor, setMotor] = useState('');
     const [tipoReparacion, setTipoReparacion] = useState([]);
 
-    async function handleCrearReparacion (e) {
+    async function handleCrearReparacion(e) {
         e.preventDefault();
         try {
             const response = await autoService.CrearReparacion({
