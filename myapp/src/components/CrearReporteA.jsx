@@ -5,13 +5,14 @@ import { Link } from 'react-router-dom';
 export default function CrearReporteA(){
     const [patente, setPatente] = useState("");
     const [reporteA, setReporteA] = useState("");
+
     async function handleCrearReporteA(e){
         e.preventDefault();
         try{
             const response = await autoService.CrearReporteA(patente);
             setReporteA(response.data);
             setPatente("");
-            alert("Reporte A generado   ");
+            alert("Reporte A generado ");
         }catch(error){
             console.log(error);
             alert("Error al calcular reporte A");
@@ -40,9 +41,11 @@ export default function CrearReporteA(){
             {reporteA && (
                 <div>
                     <h2>Detalle del Reporte</h2>
-                    <p>Patente: {reporteA.patente}</p>
-                    
-                    
+                    <p>Patente: {reporteA.patente} </p>
+                    <p>Tipo auto: {reporteA.tipo_auto} </p>
+                    <p>Tipo Motor: {reporteA.tipo_motor} </p>
+                    <p>costo total: {reporteA.costoTotalReparaciones} </p>
+                    <p>antiguedad: {reporteA.antiguedad_auto}</p>
                 </div>
             )}
         </div>
