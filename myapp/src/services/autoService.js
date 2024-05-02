@@ -9,7 +9,7 @@ function CrearAuto(a) {
 }
 
 function CrearReparacion(r){
-    return axios.post(`${REPARACIONL_URL}/crearReparacion`, r);
+    return axios.post(`${REPARACION_URL}/crearReparacion`, r);
 }
 
 function CrearReporteA(patente){
