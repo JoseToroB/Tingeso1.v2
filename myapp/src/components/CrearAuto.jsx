@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import autoService from '../services/autoService.js';
-
+import { Link } from 'react-router-dom';
 export default function crearAuto() {
     const [patente, setPatente] = useState("");
     const [marca, setMarca] = useState("");
@@ -45,6 +45,11 @@ export default function crearAuto() {
 
     return (
         <div className="container">
+            <div>
+                <Link to="/">
+                    <button className="btn-accion">Inicio</button>
+                </Link>
+            </div>
             <h1 className="mb-4">Registrar Auto</h1>
             <form className="border row g-3 px-4" onSubmit={handleCrearAuto}>
 
