@@ -3,6 +3,7 @@ package com.example.tingeso1.services;
 import com.example.tingeso1.entities.ReparacionEntity;
 import com.example.tingeso1.repositories.ReparacionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,8 +28,7 @@ public class ReparacionService {
         return reparacionRepository.findAllBypatente(patente);
 
     }
-    public ReparacionEntity guardarReparacion(ReparacionEntity reparacion) {
-        return reparacionRepository.save(reparacion);
-    
+    public ResponseEntity<ReparacionEntity> guardarReparacion(ReparacionEntity reparacion) {
+        return ResponseEntity.ok(reparacionRepository.save(reparacion));
     }
 }
