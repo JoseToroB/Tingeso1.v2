@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const AUTO_URL = "http://localhost:80/autos";
+const AUTO_URL = "http://torotingesol1.brazilsouth.cloudapp.azure.com/autos";
 /*const REPARACION_URL = "http://localhost:8090/HistorialReparaciones";*/
 
 function CrearAuto(a) {
