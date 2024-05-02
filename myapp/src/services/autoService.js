@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const AUTO_URL = "http://torotingesol1.brazilsouth.cloudapp.azure.com/autos";
-const REPARACION_URL = "http://torotingesol1.brazilsouth.cloudapp.azure.com/HistorialReparaciones";
+const REPARACION_URL = "http://torotingesol1.brazilsouth.cloudapp.azure.com/reparaciones";
 const REPORTEA_URL = "http://torotingesol1.brazilsouth.cloudapp.azure.com/reportesA";
 function CrearAuto(a) {
     console.log("Saving vehicle:", a);
@@ -9,7 +9,7 @@ function CrearAuto(a) {
 }
 
 function CrearReparacion(r){
-    return axios.post(`${REPARACIONL_URL}/savehistorial`, r);
+    return axios.post(`${REPARACIONL_URL}/crearReparacion`, r);
 }
 
 function CrearReporteA(patente){
