@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import autoService from '../services/autoService.js';
 import { Link } from 'react-router-dom';
+
 export default function crearAuto() {
     const [patente, setPatente] = useState("");
     const [marca, setMarca] = useState("");

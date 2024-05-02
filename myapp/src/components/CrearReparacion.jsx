@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 
 import autoService from '../services/autoService.js';
 import { Link } from 'react-router-dom';
-const CrearReparacion = () => {
+export default function crearReparacion() {
     const [montoTotal, setMontoTotal] = useState('');
     const [fechaIngreso, setFechaIngreso] = useState('');
     const [horaIngreso, setHoraIngreso] = useState('');
@@ -140,5 +140,3 @@ const CrearReparacion = () => {
 
     );
 };
-
-export default CrearReparacion;
