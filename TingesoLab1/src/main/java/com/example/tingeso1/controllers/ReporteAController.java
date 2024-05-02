@@ -28,12 +28,19 @@ public class ReporteAController {
     }
 
     @GetMapping("/calcularReporteA/{patente}")
-    public String calcularReporteA(@PathVariable String patente, Model model){
+    public ResponseEntity<ReporteAEntity> calcularReporteA(@PathVariable String patente){
+        reporteAService.calcularReporteA(patente);
+        ReporteAEntity reporte = reporteAService.getReporteByPatente(patente);
+        return ResponseEntity.ok(reporte);
+    }
+    
+    /*public String calcularReporteA(@PathVariable String patente, Model model){
         reporteAService.calcularReporteA(patente);
         ReporteAEntity reporte = reporteAService.getReporteByPatente(patente);
         model.addAttribute("reporte", reporte);
         return "mostrarReporteA";
-    }
+    }*/
+
     @GetMapping("/eliminarReportes")
     public String eliminarReportes(){
         reporteAService.eliminarReportes();
