@@ -24,11 +24,14 @@ public class ReparacionController {
         return ResponseEntity.ok(reparaciones);
     }
     @PostMapping("/crearReparacion")
-    public String crearReparacion(@ModelAttribute("reparacion") ReparacionEntity reparacion, Model model) {
+    public ResponseEntity<ReparacionEntity> crearReparacion(@RequestBody ReparacionEntity reparacion) {
+        return ResponseEntity.ok(reparacionService.guardarReparacion(reparacion));
+    }
+    /*public String crearReparacion(@ModelAttribute("reparacion") ReparacionEntity reparacion, Model model) {
         reparacionService.guardarReparacion(reparacion);
         model.addAttribute("reparacion",reparacion);
         return "index";
-    }
+    }*/
     @GetMapping("/borrarReparaciones")
     public String borrarReparaciones() {
         reparacionService.eliminarReparaciones();

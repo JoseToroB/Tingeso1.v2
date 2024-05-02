@@ -27,7 +27,8 @@ public class ReparacionService {
         return reparacionRepository.findAllBypatente(patente);
 
     }
-    public void guardarReparacion(ReparacionEntity reparacion) {
-        reparacionRepository.save(reparacion);
+    public ReparacionEntity guardarReparacion(ReparacionEntity reparacion) {
+        return reparacionRepository.save(reparacion);
+    
     }
 }
